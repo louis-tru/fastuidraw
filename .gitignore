@@ -29,3 +29,5 @@ string_resources_cpp
 emscripten_build
 *-debug.*
 *-release.*
+
+**.DS_Store

@@ -61,50 +61,19 @@ public:
     /* In this example we build a complicated path using the
     * operator<< overloads that fastuidraw::Path defines.
     */
-    m_path << fastuidraw::Path::contour_start(fastuidraw::vec2( 460, 60 ))
-          << fastuidraw::vec2( 644, 134 )
-          << fastuidraw::vec2( 544, 367 )
+    m_path
+          << fastuidraw::Path::contour_start(fastuidraw::vec2( 20, 20 ))
+          << fastuidraw::vec2( 180, 20 )
+          << fastuidraw::vec2( 100, 180 )
           << fastuidraw::Path::contour_close()
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( 560, 60 ))
-          << fastuidraw::vec2( 644, 367 )
-          << fastuidraw::vec2( 744, 134 )
+    ;
+
+    m_path2
+          << fastuidraw::Path::contour_start(fastuidraw::vec2( 20, 120 ))
+          << fastuidraw::vec2( 100, -40 )
+          << fastuidraw::vec2( 180, 120 )
           << fastuidraw::Path::contour_close()
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( 0, 0 ))
-          << fastuidraw::Path::control_point(fastuidraw::vec2( 100, -100 ))
-          << fastuidraw::Path::control_point(fastuidraw::vec2( 200, 100 ))
-          << fastuidraw::vec2( 300, 0 )
-          << fastuidraw::Path::arc_degrees(233, fastuidraw::vec2( 500, 0 ))
-          << fastuidraw::vec2( 500, 100 )
-          << fastuidraw::Path::arc_degrees(212, fastuidraw::vec2( 500, 300 ))
-          << fastuidraw::Path::control_point(fastuidraw::vec2( 250, 200 ))
-          << fastuidraw::Path::control_point(fastuidraw::vec2( 125, 400 ))
-          << fastuidraw::vec2( 90, 120 )
-          << fastuidraw::Path::arc_degrees(290, fastuidraw::vec2( 20, 150 ))
-          << fastuidraw::vec2( -40, 160 )
-          << fastuidraw::Path::contour_close()
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( 59, 9 ))
-          << fastuidraw::vec2( 59, -209 )
-          << fastuidraw::vec2( 519, -209 )
-          << fastuidraw::vec2( 519, 9 )
-          << fastuidraw::Path::contour_close_arc_degrees(-180)
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( 160, 60 ))
-          << fastuidraw::vec2( 344, 134 )
-          << fastuidraw::vec2( 244, 367 )
-          << fastuidraw::Path::contour_close()
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( 260, 60 ))
-          << fastuidraw::vec2( 344, 367 )
-          << fastuidraw::vec2( 444, 134 )
-          << fastuidraw::Path::contour_close()
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( 360, 60 ))
-          << fastuidraw::vec2( 544, 134 )
-          << fastuidraw::vec2( 444, 367 )
-          << fastuidraw::Path::contour_close()
-          << fastuidraw::Path::contour_start(fastuidraw::vec2( -60, -60 ))
-          << fastuidraw::vec2( -100, 300 )
-          << fastuidraw::vec2( 60, 500 )
-          << fastuidraw::vec2( 200, 570 )
-          << fastuidraw::vec2( 300, 100 )
-          << fastuidraw::Path::contour_close_arc_degrees(80);
+    ;
 
     /* Get the approximate bounding box for the path. This approximate
     * bounding box computation is a cheap function returning cached
@@ -138,8 +107,12 @@ public:
 
     /* first fill the path with the color red, using the odd-even fill rule */
     m_painter->fill_path(fastuidraw::PainterBrush()
-                        .color(1.0f, 0.0f, 0.0f, 1.0f),
+                        .color(1.0f, 0.0f, 0.0f, .5f),
                         m_path, m_example_fill_rule);
+
+    m_painter->fill_path(fastuidraw::PainterBrush()
+                        .color(0.0f, 1.0f, 0.0f, .5f),
+                        m_path2, m_example_fill_rule);
 
     /* then stroke the path with transparent orange, applying a
     * - stroking width of 8.0
@@ -201,7 +174,7 @@ public:
   }
 
 private:
-  fastuidraw::Path m_path;
+  fastuidraw::Path m_path, m_path2;
   fastuidraw::Rect m_path_bounds;
   ExampleFillRule m_example_fill_rule;
 };

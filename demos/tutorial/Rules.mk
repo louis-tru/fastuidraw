@@ -13,6 +13,9 @@ include $(dir)/Rules.mk
 dir := $(d)/path2
 include $(dir)/Rules.mk
 
+dir := $(d)/path3
+include $(dir)/Rules.mk
+
 dir := $(d)/text
 include $(dir)/Rules.mk
 

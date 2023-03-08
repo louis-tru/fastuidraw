@@ -31,3 +31,5 @@ emscripten_build
 *-release.*
 
 **.DS_Store
+
+# .vscode

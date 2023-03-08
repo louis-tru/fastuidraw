@@ -4361,6 +4361,8 @@ fill_path(const fastuidraw::PainterFillShader &shader,
       return;
     }
 
+  // apply_anti_aliasing = 0;
+
   if (apply_anti_aliasing)
     {
       pre_draw_anti_alias_fuzz(filled_path,
@@ -4372,12 +4374,12 @@ fill_path(const fastuidraw::PainterFillShader &shader,
       m_work_room.m_fill_aa_fuzz.m_total_increment_z = 0;
     }
 
-  draw_generic(shader.item_shader().get(), draw,
-               make_c_array(m_work_room.m_fill_opaque.m_attrib_chunks),
-               make_c_array(m_work_room.m_fill_opaque.m_index_chunks),
-               make_c_array(m_work_room.m_fill_opaque.m_index_adjusts),
-               make_c_array(m_work_room.m_fill_opaque.m_chunk_selector),
-               m_current_z + m_work_room.m_fill_aa_fuzz.m_total_increment_z);
+  // draw_generic(shader.item_shader().get(), draw,
+  //              make_c_array(m_work_room.m_fill_opaque.m_attrib_chunks),
+  //              make_c_array(m_work_room.m_fill_opaque.m_index_chunks),
+  //              make_c_array(m_work_room.m_fill_opaque.m_index_adjusts),
+  //              make_c_array(m_work_room.m_fill_opaque.m_chunk_selector),
+  //              m_current_z + m_work_room.m_fill_aa_fuzz.m_total_increment_z);
 
   if (apply_anti_aliasing)
     {
